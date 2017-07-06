@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars: The Force Awakens in CSS</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Lato:700'>
+    
+    <link href="css/style2.css" rel="stylesheet" />
+
+    <!-- Bootstrap Core Css -->
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="css/themes/all-themes.css" rel="stylesheet" />
+
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+</head>
+<body>
+    <div class="starwars-demo">
+        <img src="http://cssanimation.rocks/demo/starwars/images/star.svg" alt="Star" class="star">
+        <img src="http://cssanimation.rocks/demo/starwars/images/wars.svg" alt="Wars" class="wars">
+        <h3 class="byline" id="byline">Minimos cuadrados</h3>
+
+    </div>
+    <div class="starwars-demo-2">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" onclick="discreto();">
+                <div class="info-box bg-indigo hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">show_chart</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">Caso</div>
+                        <div class="number">Discreto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" onclick="continuo();">
+                <div class="info-box bg-blue hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">multiline_chart</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">Caso</div>
+                        <div class="number">Continuo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="info-box  bg-amber hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">import_contacts</i>
+                    </div>
+                    <div class="content">
+                        <div class="text"></div>
+                        <div class="number">Informacion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/index.js"></script>
+
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="plugins/node-waves/waves.js"></script>
+  
+     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Custom Js -->
+    <script src="js/admin.js"></script>
+
+    <!-- Demo Js -->
+    <script src="js/demo.js"></script>
+
+    <script type="text/javascript">
+        function discreto() {
+            window.location.href='discreto.html';
+        }
+
+        function continuo() {
+            window.location.href='continuo.html';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		     <script src="../numeric-1.2.6.min.js"></script>
+	<script src="math.js"></script>
+	<title>Potencial discreto</title>
+	</head>
+	<body>
+    <h2>Coeficientes de las ecuaciones antes del igual: </h2>
+    <p id = demo1></p>
+    <h2>Coeficientes de las ecuaciones despues del igual: </h2>
+    <p id="demo2"></p>
+    <h2>Matriz que deberia de estar llena: </h2>
+        <p id="demo3"></p>
+        <h2>Coeficientes al hacer el solve: </h2>
+        <p id="demo4"></p>
+        <h2>Ecuacion completa: </h2>
+        <p id="demo5"></p>
+		<script type="text/javascript">
+
+            
+            
+             var n=10;
+    //Grado del polinimo
+    var m=2;
+    
+    //document.write('Ejercicio de grado ' + m + '<br><br>');
+    //Puntos
+     var x = [4.0,4.2,4.5,4.7,5.1,5.5,5.9,6.3,6.8,7.1];
+     var y = [102.56,113.18,130.11,142.05,167.53,195.14,224.87,256.73,299.50,326.72];
+                
+				var coef1 = fillCoef1(n,m,x,y);
+				var coef2 = fillCoef2(n,m,x,y);
+    			var matrix = fillMatrix(m,coef1);
+                var solve = solveEcc(matrix,coef2)
+                document.getElementById('demo1').innerHTML=coef1;
+                document.getElementById('demo2').innerHTML=coef2;
+                document.getElementById('demo3').innerHTML=matrix;    
+                document.getElementById('demo4').innerHTML=solve;
+                document.getElementById('demo5').innerHTML=getEcuation();        
+
+    			 function createMatrix(rows){
+                    var matrix = new Array();
+                    for(var i=0;i<rows;i++){
+                    matrix.push([]);
+                    }
+                    return matrix;
+                }
+
+
+                function fillMatrix(m, array){
+        			var ecc = createMatrix(m);
+        			for (var i=0;i<m;i++){
+    			        for(var j=0;j<m;j++){
+               				 ecc[i].push(array[i+j]);   
+           				 }
+        			}
+        			return ecc;
+    			}
+
+    			//ecuacion normal 1
+    			function fillCoef1(n,m,x,y){
+        			var aux;
+        			var coef1 = new Array();
+         			for(var i=0;i<m+1;i++){
+            		aux=0;
+            			for(var k=0;k<n;k++){
+                			aux+=Math.pow(math.log(x[k]),i);   
+            				}
+            		coef1.push(aux);
+        			}
+        			return coef1;
+    			}
+
+    			function fillCoef2(n,m,x,y){
+        			var aux;
+        			var aux2;
+        			var coef2 = new Array();
+        			for(var k=0; k<m-1; k++){
+            			aux=0;
+            			aux2=0;
+            			for(var i=0; i < n; i++){
+                			aux+=(math.log(y[i]))*(math.log(x[i]));    
+                			aux2+=math.log(y[i]);
+            				}
+                    coef2.push(aux2);   
+            		coef2.push(aux); 
+        			}  
+       				 return coef2;
+    			}
+
+    			function solveEcc(matrix, array){
+        			return numeric.solve(matrix,array);
+    			}
+                /************************************************ESTA ES LA QUE IMPORTA, LA QUE HACE TODOOOOOOO D:**************************************/
+                 function getEcuation(){
+                var matrix = fillMatrix(m,coef1);
+                var coef2 = fillCoef2(n,2,x,y);
+                var values = solveEcc(matrix,coef2); 
+                console.log(values);
+                return "Y= "+values[0]+"*"+"x^("+values[1]+")";
+                }
+                /***************************************************************************************************************************************/
+
+            //NO SE POR QUE LO HICE, PERO EN ALGUN MOMENTO VA A TENER SU UTILIDAD
+    			function DiscPOT(n,x,y){
+        			var coef1 = fillCoef1(n,2,x,y);
+        			var matrix = fillMatrix(m,coef1);
+        			var coef2 = fillCoef2(n,2,x,y);
+        			var values = solveEcc(matrix,coef2); 
+    			}	
+
+		</script>	
+	</body>
+</html>

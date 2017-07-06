@@ -1,0 +1,50 @@
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: Century Gothic, sans-serif;
+	background-color: #EFEEEE;
+}
+header{
+	width: 100%;
+	height: 50px;
+	position:fixed;
+	z-index: 100;
+	background-color:#00BCD4
+;
+	top:0;
+	left:0;
+ 	}
+.container{
+	width:98%;
+	margin:auto;
+}
+.container h2{
+	color: #fff;
+	position: absolute;
+	margin:5px; 
+}
+
+.menu_container{
+	padding: 50px;
+	position: relative;
+	margin: 0 auto;
+	width: 500px;
+	height: 200px;
+	background-color: rgba(224, 224, 224, 0.57);
+	margin-top: 150px;
+	border-radius: 15px;
+}
+
+.row{
+	margin: auto;
+    position: absolute;
+    bottom: 0;
+}
+.titulo{
+	margin: auto;
+    position: absolute;
+	font-size: 75px;
+}

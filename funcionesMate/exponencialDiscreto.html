@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		     <script src="../numeric-1.2.6.min.js"></script>
+	<script src="math.js"></script>
+	<title>Exponencial discreto</title>
+	</head>
+	<body>
+	<h2>Coeficientes de las ecuaciones antes del igual: </h2>
+	<p id = demo1></p>
+	<h2>Coeficientes de las ecuaciones despues del igual: </h2>
+	<p id="demo2"></p>
+	<h2>Matriz que deberia de estar llena: </h2>
+		<p id="demo3"></p>
+		        <h2>Coeficientes al hacer el solve: </h2>
+        <p id="demo4"></p>
+        <h2>Y el resultado final: </h2>
+        <p id="demo5"></p>
+		<script type="text/javascript">
+            
+                /*
+     		    var n=8;
+    			var m=2;
+				var x = [0.2,0.3,0.6,0.9,1.1,1.3,1.4,1.6];
+				var y = [0.050446,0.098426,0.33277,0.7260,1.0972,1.5697,1.8487,2.5015];
+				*/
+                 //Numero de datos
+    var n=10;
+    //Grado del polinimo
+    var m=2;
+    
+    //document.write('Ejercicio de grado ' + m + '<br><br>');
+    //Puntos
+     var x = [4.0,4.2,4.5,4.7,5.1,5.5,5.9,6.3,6.8,7.1];
+     var y = [102.56,113.18,130.11,142.05,167.53,195.14,224.87,256.73,299.50,326.72];
+                
+                var coef1 = fillCoef1(n,m,x,y);
+				var coef2 = fillCoef2(n,m,x,y);
+    			var matrix = fillMatrix(m,coef1);
+    			var solve = solveEcc(matrix,coef2)
+    			document.getElementById('demo1').innerHTML=coef1;
+    			document.getElementById('demo2').innerHTML=coef2;
+    			document.getElementById('demo3').innerHTML=matrix;
+    			document.getElementById('demo4').innerHTML=solve;
+    			document.getElementById('demo5').innerHTML=getEcuation();    
+
+
+			 function createMatrix(rows){
+                var matrix = new Array();
+                for(var i=0;i<rows;i++){
+                matrix.push([]);
+                }
+                return matrix;
+            }
+
+
+           /* function fillMatrix(m, array){
+    			var ecc = createMatrix(m+1);
+    			for (var i=0;i<m+1;i++){
+			        for(var j=0;j<m+1;j++){
+           				 ecc[i].push(array[i+j]);   
+       				 }
+    			}
+    			return ecc;
+			}*/
+
+			function fillMatrix(m, array){
+        		var ecc = createMatrix(m);
+        			for (var i=0;i<m;i++){ //fila 0 ..... fila 1
+    			        for(var j=0;j<m;j++){ //columna 0,1 ....... columna 0,1
+               				 ecc[i].push(array[i+j]);   
+           				 }
+        			}
+        			return ecc;
+    			}
+
+			//ecuacion normal 1
+			function fillCoef1(n,m,x,y){
+    			var aux;
+    			var coef1 = new Array();
+     			for(var i=0;i<m+1;i++){
+        		aux=0;
+        			for(var k=0;k<n;k++){
+            			aux+=Math.pow(x[k],i);   
+        				}
+        		coef1.push(aux);
+    			}
+    			return coef1;
+			}
+
+			function fillCoef2(n,m,x,y){
+    			var aux;
+    			var aux2;
+    			var coef2 = new Array();
+    			for(var k=0; k<m-1; k++){
+        			aux=0;
+        			aux2=0;
+        			for(var i=0; i < n; i++){
+            			aux+=(math.log(y[i]))*x[i];    
+            			aux2+=math.log(y[i]);
+        				}
+        		coef2.push(aux2);   
+        		coef2.push(aux); 
+    			}  
+   				 return coef2;
+			}
+
+			function solveEcc(matrix, array){
+    			return numeric.solve(matrix,array);
+			}
+			
+//D:
+			 /************************************************ESTA ES LA QUE IMPORTA, LA QUE HACE TODOOOOOOO D:**************************************/
+
+			function getEcuation(){
+    			var matrix = fillMatrix(m,coef1);
+    			var coef2 = fillCoef2(n,2,x,y);
+    			var values = solveEcc(matrix,coef2); 
+    			var expA = Math.exp(values[0]);
+    			return "Y= "+expA+"*"+"e^("+values[1]+"x)";
+   			}
+   		   /***************************************************************************************************************************************/
+
+			//NO SE POR QUE LO HICE, PERO EN ALGUN MOMENTO VA A TENER SU UTILIDAD
+			function DiscEXP(n,x,y){
+    			var coef1 = fillCoef1(n,2,x,y);
+    			var matrix = fillMatrix(m,coef1);
+    			var coef2 = fillCoef2(n,2,x,y);
+    			var values = solveEcc(matrix,coef2); 
+    			var ec = getEcuation();
+			}	
+
+		</script>	
+	</body>
+</html>

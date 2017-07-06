@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>LEAST SQUARE</title>
+      <script src="math.js"></script>
+     <script src="numeric-1.2.6.min.js"></script>
+    <script src="custom_argument_parsing.js"></script>
+     <script src ="least_squares.js" ></script>
+     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+<body onload="calculate()">
+
+<h2>Least Squares</h2>
+
+
+<p>Caso Discreto Polinomial</p>
+<p id="dpol"></p>
+<p>Caso Discreto Exponencial</p>
+<p id="dexp"></p>
+
+<p>Caso Discreto Potencial</p>
+<p id="dpot"></p>
+    
+<p>Caso Discreto Logaritmico</p>
+<p id="dlog"></p>
+
+	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
+
+<script>
+                 Highcharts.chart('container', {
+            xAxis: {
+                min: -0.5,
+                max: 5.5
+            },
+            yAxis: {
+                min: 0
+            },
+            title: {
+                text: 'Scatter plot with regression line'
+            },
+            series: [{
+                type: 'line',
+                name: 'Regression Line',
+                data: [[0, 1.11], [5, 4.51]],
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            }, {
+                type: 'scatter',
+                name: 'Observations',
+                data: [1, 1.5, 2.8, 3.5, 3.9, 4.2],
+                marker: {
+                    radius: 4
+                }
+            }]
+        });
+</script>
+	
+</body>
+</html>
