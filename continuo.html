@@ -66,7 +66,7 @@
                             <img src="images/favicon-32x32.png" width="32" height="32">
                             <span>Minimos Cuadrados</span>
                         </div>
-                    </div> 
+                    </div>
                 </a>
             </div>
         </div>
@@ -134,7 +134,7 @@
                                         <input type="text" class="form-control" placeholder="Fúncion" id="inputF1"/>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-sm-6">
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" data-toggle="modal" data-target="#modal2">
                         <div class="info-box-4 hover-zoom-effect">
@@ -222,7 +222,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="campo">
-                        
+
                     </div>
                 </div>
             </div>
@@ -249,13 +249,13 @@
             <div class="card">
                     <div class="header">
                         <h2>Grafica</h2>
-                        <button type="button" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
+                        <button type="button" onclick="CasoContinuoPDF();" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
                     </div>
                     <div class="body">
-                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
+                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                     </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -326,14 +326,14 @@
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
-  
+
      <script src="plugins/jquery-countto/jquery.countTo.js"></script>
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    
+
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
@@ -355,7 +355,7 @@
           if (tecla==8){
               return true;
           }
-              
+
           // Patron de entrada, en este caso solo acepta numeros
           patron =/[1-9]/;
           tecla_final = String.fromCharCode(tecla);
@@ -363,7 +363,7 @@
         }
 
         function AgregarCampos(){
-            var number=document.getElementById("number").value;  
+            var number=document.getElementById("number").value;
             for (var i = 1; i <= number; i++) {
                 campo='<div class="row clearfix">'+
                             '<div class="col-sm-6">'+
@@ -387,10 +387,10 @@
         }
 
         function AgregarCampo(){
-            var number=document.getElementById("number3").value;  
+            var number=document.getElementById("number3").value;
             campo='<label>Expresión deseada</label>'+'<input type="text" class="form-control" id="number2" onkeypress="return valida(event);" value="'+number+'" disabled/>';
             $("#campo").append(campo);
-            
+
         }
 
          function polinomial() {
@@ -404,7 +404,7 @@
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=ContiPol(2,Fx,LI, LS);
-            } 
+            }
             else if (number2==3) {
                 document.getElementById('inputF').value=ContiPol(3,Fx,LI, LS);
             }
@@ -413,7 +413,7 @@
             }
             else{
                 alert('Grado no permitido');
-            }  
+            }
         }
 
 
@@ -454,6 +454,10 @@
         }]
     });
 </script>
+<script src="js/jsPDF/jspdf.debug.js"></script>
+<script src="js/jsPDF/main.js"></script>
+<script src="build.js"></script>
+<script src="js/funcionespdf.js"></script>
 </body>
 
 </html>

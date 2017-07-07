@@ -26,12 +26,12 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
-    
+
     <script src="math.js"></script>
     <script src="numeric-1.2.6.min.js"></script>
     <script src="custom_argument_parsing.js"></script>
     <script src ="least_squares.js" ></script>
-  
+
 
 </head>
 
@@ -68,7 +68,7 @@
                             <img src="images/favicon-32x32.png" width="32" height="32">
                             <span>Minimos Cuadrados</span>
                         </div>
-                    </div> 
+                    </div>
                 </a>
             </div>
         </div>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" data-toggle="modal" data-target="#modal2">
                         <div class="info-box-4 hover-zoom-effect">
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="campo">
-                        
+
                     </div>
                 </div>
             </div>
@@ -258,15 +258,15 @@
             <div class="card">
                     <div class="header">
                         <h2>Grafica</h2>
-                        <button type="button" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
+                        <button type="button" onclick="CasoDiscretoPDF();" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
                     </div>
                     <div class="body">
                         <p id="prueba"></p>
                         <p id="prueba2"></p>
-                      <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
+                      <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                     </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -337,14 +337,14 @@
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
-  
+
      <script src="plugins/jquery-countto/jquery.countTo.js"></script>
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    
+
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
@@ -387,7 +387,7 @@
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=DiscPol(num,2,Mx,My);
-            } 
+            }
             else if (number2==3) {
                 document.getElementById('inputF').value=DiscPol(num,3,Mx,My);
             }
@@ -396,7 +396,7 @@
             }
             else{
                 alert('Grado no permitido');
-            }  
+            }
         }
 
 
@@ -407,7 +407,7 @@
           if (tecla==8){
               return true;
           }
-              
+
           // Patron de entrada, en este caso solo acepta numeros
           patron =/[1-9]/;
           tecla_final = String.fromCharCode(tecla);
@@ -416,7 +416,7 @@
 
         function AgregarCampos(){
             var number=document.getElementById("number").value;
-              
+
             for (var i = 1; i <= number; i++) {
                 campo='<div class="row clearfix">'+
                             '<div class="col-sm-6">'+
@@ -444,10 +444,10 @@
         }
 
         function AgregarCampo(){
-            var number=document.getElementById("number3").value;  
+            var number=document.getElementById("number3").value;
             campo='<label>Expresión deseada</label>'+'<input type="text" class="form-control" id="number2" onkeypress="return valida(event);" value="'+number+'" disabled/>';
             $("#campo").append(campo);
-            
+
         }
 
         function CrearMx(){
@@ -469,9 +469,10 @@
         }
 
     </script>
-
-    
+    <script src="js/jsPDF/jspdf.debug.js"></script>
+    <script src="js/jsPDF/main.js"></script>
+    <script src="build.js"></script>
+    <script src="js/funcionespdf.js"></script>
 </body>
 
 </html>
-

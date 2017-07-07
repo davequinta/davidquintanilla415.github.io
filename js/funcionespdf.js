@@ -1,5 +1,6 @@
+// Funcion para crear PDF en caso Discreto
 function CasoDiscretoPDF(){
-  var pdf = new jsPDF('p', 'pt', 'letter');
+  var pdf = new jsPDF('p', 'pt', 'letter');// parametros:  orientacion (portrait, landscape),unidad de medida a utilizar y tamaño del pdf
   var y=100; //Variable para llevar posicion en x del texto
   var x=40;//variable para llevar posicion en y del texto
   var p=y;
@@ -12,12 +13,12 @@ function CasoDiscretoPDF(){
   pdf.setFont('Helvetica', 'Oblique');
   pdf.setFontSize(12);
   pdf.setTextColor(0,0,0);
- 
+
   y+=20;
   pdf.text('Ecuaciones Normales encontradas: ', x ,y)
   // variable e = numero de ecuaciones normales
-  var e = 4;
-  for (var i = 0; i < e; i++) {
+  var e = new Array();
+  for (var i = 0; i < e.length; i++) {
     pdf.text('Ecuación ' + i + ': ', 290, y)
     pdf.text('Q1x + Q2x^2 - Q3x^3', 355, y)
     y+=20;
@@ -44,7 +45,6 @@ function CasoDiscretoPDF(){
   pdf.text('A continuación presentamos una tabla con los valores interpolados con nuestro polinomio: ', x, y)
   y+=30;
   x+=165;
-//pdf.rect(x,y, 525,200);
 // Creacion Tabla
   pdf.setLineWidth(1);
   pdf.setDrawColor(0,2,50);
@@ -68,9 +68,11 @@ function CasoDiscretoPDF(){
     y+=20;
   }
   pdf.line(x,y,x+200,y);//linea inferior de la tabla
-
   pdf.save('Smirnov');
 }
+
+
+//funcion para crear PDF en caso continuo
 function CasoContinuoPDF(){
   var pdf = new jsPDF('p', 'pt', 'letter');
   var y=100; //Variable para llevar posicion en x del texto
@@ -157,4 +159,23 @@ function CasoContinuoPDF(){
   pdf.line(x,y,x+400,y);//Linea inferior de la tabla
 
   pdf.save('Smirnov');
+}
+
+
+// funcion para formar ecuaciones normales
+function ecNormales( coeficientes, resultados){ // recibe los coeficientes de las ecuaciones normales y a que esta igualada la ecuacion
+  var arreglo= new Array();
+  for (var i = 0; i < coeficientes.length; i++) {
+    var ec="";//reinicia la variable en cada iteracion
+    for (var j = 0; j < coeficientes[i].length; j++) {
+        if (j<coeficientes[i].length-1) {
+          ec+="C"+j+"*"+coeficientes[i][j]+" + ";// agrega cada constante a la cadena - arma la ecuacion
+        }else {
+          ec+="C"+j+"*"+coeficientes[i][j];
+        }
+    }
+    ec+=" = "+ resultados[i];// agrega el factor a lo que esta igualada la ecuacion
+    arreglo.push(ec);// añade la ecuacion formada al arreglo
+  }
+  return arreglo; // regresa un arreglo con todas las ecuaciones normales formadas
 }
