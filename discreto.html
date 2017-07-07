@@ -500,6 +500,29 @@
             return y;
         }
 
+        var arr = [1,2,3,4];
+        var cad = "x^2";
+        function exactValueContin(cad,arr){
+            var node2 = math.parse(cad);
+            var code2 = node2.compile();
+
+            var evalpoints = new Array();
+
+            for(var i=0;i<=arr.length;i++){
+                evalpoints[i]=new Array(2);
+                 var epoint =arr[i];
+                var scope = {
+                  x: epoint,
+                };
+                evalpoints[i].push(array[i]);
+                evalpoints[i].push(code2.eval(scope));
+
+            }
+
+            return evalpoints;
+
+        }
+
     </script>
     <script src="js/jsPDF/jspdf.debug.js"></script>
     <script src="js/jsPDF/main.js"></script>
