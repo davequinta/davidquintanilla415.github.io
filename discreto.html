@@ -362,7 +362,9 @@
             My=CrearMy();
 
             document.getElementById('inputF').value=DiscExpo(num,Mx,My);
-            ecussexp(num,Mx,My)
+            ecussexp(num,Mx,My);
+            var fun = document.getElementById("inputF").value;
+            plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
         }
 
         function logaritmica() {
@@ -371,7 +373,7 @@
 
             document.getElementById('inputF').value=DiscLog(num,Mx,My);
             var fun = document.getElementById("inputF").value;
-            //plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
+            plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
         }
         var matrixecus;
         var coefsecus;
@@ -402,6 +404,8 @@
 
             document.getElementById('inputF').value=DiscPoten(num,Mx,My);
             ecusspot(num,Mx,My);
+            var fun = document.getElementById("inputF").value;
+            plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
         }
 
         function polinomial() {
@@ -412,21 +416,27 @@
                 document.getElementById('inputF').value=DiscPol(num,1,Mx,My);
                 ecusspol(num,1,Mx,My);
                 var fun = document.getElementById("inputF").value;
-            plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
+                plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
 
                 //plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=DiscPol(num,2,Mx,My);
                 ecusspol(num,2,Mx,My);
+                var fun = document.getElementById("inputF").value;
+                plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
             }
             else if (number2==3) {
                 document.getElementById('inputF').value=DiscPol(num,3,Mx,My);
                 ecusspol(num,3,Mx,My);
+                var fun = document.getElementById("inputF").value;
+                plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
             }
             else if (number2==4) {
                 document.getElementById('inputF').value=DiscPol(num,4,Mx,My);
                 ecusspol(num,4,Mx,My);
+                var fun = document.getElementById("inputF").value;
+                plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
             }
             else{
                 alert('Grado no permitido');
