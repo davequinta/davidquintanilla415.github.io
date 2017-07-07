@@ -371,7 +371,7 @@
 
             document.getElementById('inputF').value=DiscLog(num,Mx,My);
             var fun = document.getElementById("inputF").value;
-            plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
+            //plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
         }
         var matrixecus;
         var coefsecus;
@@ -412,7 +412,9 @@
                 document.getElementById('inputF').value=DiscPol(num,1,Mx,My);
                 ecusspol(num,1,Mx,My);
                 var fun = document.getElementById("inputF").value;
-                plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
+            plotDisc(parOrd(math.number(Mx),math.number(My)),parOrd(math.number(Mx),evalFunc(fun,math.number(Mx))));
+
+                //plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=DiscPol(num,2,Mx,My);
