@@ -298,7 +298,7 @@ function solveEcc(matrix, array){
 function createPol(values,m){
     var fun = '';
     for(var i=0;i<m+1;i++){
-        fun+= ('('+values[i] + "*x^" +i+')');
+        fun+= ('('+values[i].toFixed(4) + "*x^" +i+')');
         if(i<m){
             fun+='+';
         }
@@ -307,15 +307,15 @@ function createPol(values,m){
 }
 
 function createExpFun(values){
-    return '('+ math.exp(values[0])+'*(e^('+values[1]+'*x)'+'))';
+    return '('+ math.exp(values[0].toFixed(4))+'*(e^('+values[1].toFixed(4)+'*x)'+'))';
 }
 
 function createPotFun(values){
-    return '('+ math.exp(values[0])+'*x^'+values[1]+')';
+    return '('+ math.exp(values[0].toFixed(4))+'*x^'+values[1].toFixed(4)+')';
     
 }
 function createLogFun(values){
-    return '('+ math.exp(values[0])+'*ln(x)+'+values[1]+')';  
+    return '('+ math.exp(values[0].toFixed(4))+'*ln(x)+'+values[1].toFixed(4)+')';  
 }
 
 
