@@ -18,9 +18,12 @@ function CasoDiscretoPDF(matrix, coefs){
   // variable e = numero de ecuaciones normales
   var e = new Array();
   e=ecNormales(matrix,coefs);
+  y+=20;
   for (var i = 0; i < e.length; i++) {
-    pdf.text('Ecuación ' + i + ': ', 290, y)
-    pdf.text(e[i], 355, y)
+    pdf.text('E' + i + ': ', x, y)
+    pdf.setFontSize(10.5);
+    pdf.text(e[i], x+25, y)
+    pdf.setFontSize(12);
     y+=20;
     }
   y+=20;
@@ -28,9 +31,10 @@ function CasoDiscretoPDF(matrix, coefs){
 // variable f = numero de incognitas encontradas
   var f = new Array();
   f=solveEcc(matrix, coefs);
+  y+=20;
   for (var i = 0; i < f.length; i++) {
-    pdf.text('C' + i + '= ', 290, y)
-    pdf.text(f[i] + '', 315, y)
+    pdf.text('C' + i + '= ', x, y)
+    pdf.text(f[i] + '', x+25, y)
     y+=20;
     }
   y+=20;
@@ -39,7 +43,7 @@ function CasoDiscretoPDF(matrix, coefs){
   pdf.setFontSize(10)
   y+=30;
   var polinomio=document.getElementById('inputF').value; // Llenar variable con respuesta XD
-  pdf.text(polinomio, x-15, y)
+  pdf.text(polinomio, x, y)
   y+=30;
   pdf.setFont('Helvetica', 'Oblique');
   pdf.setFontSize(12);
@@ -74,7 +78,7 @@ function CasoDiscretoPDF(matrix, coefs){
 
 
 //funcion para crear PDF en caso continuo
-function CasoContinuoPDF(){
+function CasoContinuoPDF(matrix, coefs){
   var pdf = new jsPDF('p', 'pt', 'letter');
   var y=100; //Variable para llevar posicion en x del texto
   var x=40;//variable para llevar posicion en y del texto
@@ -90,28 +94,33 @@ function CasoContinuoPDF(){
   pdf.setTextColor(0,0,0);
   pdf.text('Función ingresada por el usuario: ', x, y)
   //variable que almacena la funcion
-  var fun='f(x)= cos(5*x)+sin^2(6*x)+x'
+  var fun=document.getElementById('inputF1').value;
   pdf.text(fun, 290, y);
   y+=40;
   pdf.text('Intervalo ingresado por el usuario:', x, y)
-  var intervalo='[ 1 , 6 ]';
-  pdf.text(intervalo,x+290, y )
+  var intervalo="[ " +document.getElementById('inputA').value +" , "+ document.getElementById('inputB').value+" ]";
+  pdf.text(intervalo,290, y )
   y+=40;
   pdf.text('Ecuaciones Normales encontradas: ', x ,y)
   // variable e = numero de ecuaciones normales
   var e = new Array();
+  e=ecNormales(matrix,coefs);
+  y+=20;
   for (var i = 0; i < e.length; i++) {
-    pdf.text('Ecuación ' + i + ': ', 290, y)
-    pdf.text('Q1x + Q2x^2 - Q3x^3', 355, y)
+    pdf.text('E' + i + ': ', x, y)
+    pdf.setFontSize(10.5);
+    pdf.text(e[i], x+25, y)
+    pdf.setFontSize(12);
     y+=20;
     }
   y+=20;
-  pdf.text('Coeficientes encontradas: ', x ,y)
+  pdf.text('Coeficientes encontrados: ', x ,y)
   // variable f = numero de incognitas encontradas
-  var f = 4;
-  for (var i = 0; i < f; i++) {
-    pdf.text('Q ' + i + '= ', 290, y)
-    pdf.text(i + '', 315, y)
+  var f = new Array();
+  f=solveEcc(matrix, coefs);
+  for (var i = 0; i < f.length; i++) {
+    pdf.text('C' + i + '= ', 290, y)
+    pdf.text(f[i] + '', 315, y)
     y+=20;
     }
   y+=20;
@@ -120,7 +129,7 @@ function CasoContinuoPDF(){
   pdf.setFontSize(9)
   y+=30;
   var polinomio=document.getElementById('inputF').value; // Llenar variable con respuesta XD
-  pdf.text(polinomio, x-15, y)
+  pdf.text(polinomio, x, y)
   y+=30;
   pdf.setFont('Helvetica', 'Oblique');
   pdf.setFontSize(12);

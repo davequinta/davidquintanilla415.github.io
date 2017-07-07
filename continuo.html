@@ -249,7 +249,7 @@
             <div class="card">
                     <div class="header">
                         <h2>Grafica</h2>
-                        <button type="button" onclick="CasoContinuoPDF();" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
+                        <button type="button" onclick="CasoContinuoPDF(matrixecus, coefsecus);" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
                     </div>
                     <div class="body">
                         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -392,7 +392,15 @@
             $("#campo").append(campo);
 
         }
-
+        var matrixecus;
+        var coefsecus;
+        function ecuspol(m, fun, li, ls){
+          matrixecus= createMatrix(m+1);
+          var coef1 = fillCoef1Conti(m);
+          matrixecus = fillMatrixConti(m,coef1,li,ls);
+          var yun = fun;
+          coefsecus = fillCoef2Conti(yun,m,li,ls,coef1);
+        }
          function polinomial() {
             Fx=document.getElementById("inputF1").value;
             LI= document.getElementById("inputA").value;
@@ -401,15 +409,19 @@
             if (number2==1) {
 
                 document.getElementById('inputF').value=ContiPol(1,Fx,LI, LS);
+                ecuspol(1,Fx,LI,LS);
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=ContiPol(2,Fx,LI, LS);
+                ecuspol(2,Fx,LI,LS);
             }
             else if (number2==3) {
                 document.getElementById('inputF').value=ContiPol(3,Fx,LI, LS);
+                ecuspol(3,Fx,LI,LS);
             }
             else if (number2==4) {
                 document.getElementById('inputF').value=ContiPol(4,Fx,LI, LS);
+                ecuspol(4,Fx,LI,LS);
             }
             else{
                 alert('Grado no permitido');
