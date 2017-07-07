@@ -464,3 +464,72 @@ function ContiPoten(){
 function ContiLog(){
 
 }
+
+/*PARA INTERPOLACION*/
+var arr1 = [1,2,3,4]
+function interpol(cad,arr1){
+    var node2 = math.parse(cad);
+    var code2 = node2.compile();
+
+    var evalpoints = new Array();
+    for(var i=0;i<x.length;i++){
+        evalpoints[i]=new Array(2);
+         var epoint =x[i];
+        var scope = {
+          x: epoint,
+        };
+        evalpoints[i].push(array[i]);
+        evalpoints[i].push(code2.eval(scope));
+    }
+
+    return evalpoints;
+}
+
+
+
+
+
+
+
+/*PARA VALOR EXACTO CONTINUOS*/
+var arr = [1,2,3,4];
+var cad = "x^2";
+function exactValueContin(cad,arr){
+    var node2 = math.parse(cad);
+    var code2 = node2.compile();
+
+    var evalpoints = new Array();
+
+    for(var i=0;i<=arr.length;i++){
+        evalpoints[i]=new Array(2);
+         var epoint =arr[i];
+        var scope = {
+          x: epoint,
+        };
+        evalpoints[i].push(epoint[i]);
+        evalpoints[i].push(code2.eval(scope));
+
+    }
+
+    return evalpoints;
+
+}
+
+
+
+
+
+
+
+/*PARA ERROR RELATIVO*/
+var continuo = evalFunc(cad,x);
+var func = exactValueContin(cad,arr)
+function erRelativoPorcen(func,continuo){
+    var error;
+    var mError = new Array();
+    for(var i = 0; i<func.length(); i++){
+        error = (continuo[i]-func[i])/func[i];
+        mError[i].push(error);
+    }
+    return mError;
+}
