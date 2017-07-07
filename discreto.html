@@ -258,7 +258,7 @@
             <div class="card">
                     <div class="header">
                         <h2>Grafica</h2>
-                        <button type="button" onclick="CasoDiscretoPDF();" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
+                        <button type="button" onclick="CasoDiscretoPDF(matrixecus, coefsecus);" class="btn bg-red btn-xs waves-effect m-r-20" style="margin-top: 5px">Generar PDF</button>
                     </div>
                     <div class="body">
                         <p id="prueba"></p>
@@ -362,13 +362,36 @@
             My=CrearMy();
 
             document.getElementById('inputF').value=DiscExpo(num,Mx,My);
+            ecussexp(num,Mx,My)
         }
 
         function logaritmica() {
             Mx=CrearMx();
             My=CrearMy();
 
-            document.getElementById('inputF').value=DiscLog(num,Mx,My);
+            document.getElementById('inputF').value=DiscLog(num,Mx,My);;
+        }
+        var matrixecus;
+        var coefsecus;
+        function ecusspol(num,m,Mx,My){
+          matrixecus=createMatrix(m+1);
+          var coef1 = fillCoef1(num,m,Mx);
+          matrixecus = fillMatrix(m,coef1);
+          console.log(coef1);
+          console.log(matrixecus);
+          coefsecus = fillCoef2(num,m,Mx,My);
+        }
+        function ecusspot(n,x,y){
+          matrixecus=createMatrix(2);
+          var coef1 = fillCoef1(n,1,math.log(x));
+          matrixecus = fillMatrix(1,coef1);
+          coefsecus = fillCoef2(n,1,math.log(x),math.log(y));
+        }
+        function ecussexp(n,x,y){
+          matrixecus=createMatrix(2);
+          var coef1 = fillCoef1(n,1,x);
+          matrixecus = fillMatrix(1,coef1);
+          coefsecus = fillCoef2(n,1,x,math.log(y));
         }
 
         function potencia() {
@@ -376,6 +399,7 @@
             My=CrearMy();
 
             document.getElementById('inputF').value=DiscPoten(num,Mx,My);
+            ecusspot(num,Mx,My);
         }
 
         function polinomial() {
@@ -384,15 +408,19 @@
             var number2=document.getElementById("number2").value;
             if (number2==1) {
                 document.getElementById('inputF').value=DiscPol(num,1,Mx,My);
+                ecusspol(num,1,Mx,My);
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=DiscPol(num,2,Mx,My);
+                ecusspol(num,2,Mx,My);
             }
             else if (number2==3) {
                 document.getElementById('inputF').value=DiscPol(num,3,Mx,My);
+                ecusspol(num,3,Mx,My);
             }
             else if (number2==4) {
                 document.getElementById('inputF').value=DiscPol(num,4,Mx,My);
+                ecusspol(num,4,Mx,My);
             }
             else{
                 alert('Grado no permitido');

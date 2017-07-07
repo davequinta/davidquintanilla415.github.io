@@ -1,5 +1,5 @@
 // Funcion para crear PDF en caso Discreto
-function CasoDiscretoPDF(){
+function CasoDiscretoPDF(matrix, coefs){
   var pdf = new jsPDF('p', 'pt', 'letter');// parametros:  orientacion (portrait, landscape),unidad de medida a utilizar y tamaño del pdf
   var y=100; //Variable para llevar posicion en x del texto
   var x=40;//variable para llevar posicion en y del texto
@@ -13,32 +13,33 @@ function CasoDiscretoPDF(){
   pdf.setFont('Helvetica', 'Oblique');
   pdf.setFontSize(12);
   pdf.setTextColor(0,0,0);
-
   y+=20;
   pdf.text('Ecuaciones Normales encontradas: ', x ,y)
   // variable e = numero de ecuaciones normales
   var e = new Array();
+  e=ecNormales(matrix,coefs);
   for (var i = 0; i < e.length; i++) {
     pdf.text('Ecuación ' + i + ': ', 290, y)
-    pdf.text('Q1x + Q2x^2 - Q3x^3', 355, y)
+    pdf.text(e[i], 355, y)
     y+=20;
     }
   y+=20;
-  pdf.text('Coeficientes encontradas: ', x ,y)
+  pdf.text('Coeficientes encontrados: ', x ,y)
 // variable f = numero de incognitas encontradas
-  var f = 4;
-  for (var i = 0; i < f; i++) {
-    pdf.text('Q ' + i + '= ', 290, y)
-    pdf.text(i + '', 315, y)
+  var f = new Array();
+  f=solveEcc(matrix, coefs);
+  for (var i = 0; i < f.length; i++) {
+    pdf.text('C' + i + '= ', 290, y)
+    pdf.text(f[i] + '', 315, y)
     y+=20;
     }
   y+=20;
   pdf.text('Polinomio generado mediante Minimos Cuadrados: ', x, y)
   pdf.setFont('Courier', 'bold');
-  pdf.setFontSize(15)
+  pdf.setFontSize(10)
   y+=30;
-  var polinomio='0.2558x^5 + 2.3x^3 + 1.5x^2 -0.365'; // Llenar variable con respuesta XD
-  pdf.text(polinomio, x, y)
+  var polinomio=document.getElementById('inputF').value; // Llenar variable con respuesta XD
+  pdf.text(polinomio, x-15, y)
   y+=30;
   pdf.setFont('Helvetica', 'Oblique');
   pdf.setFontSize(12);
@@ -68,7 +69,7 @@ function CasoDiscretoPDF(){
     y+=20;
   }
   pdf.line(x,y,x+200,y);//linea inferior de la tabla
-  pdf.save('Smirnov');
+  pdf.save('SmirnovCasoDiscreto');
 }
 
 
@@ -98,8 +99,8 @@ function CasoContinuoPDF(){
   y+=40;
   pdf.text('Ecuaciones Normales encontradas: ', x ,y)
   // variable e = numero de ecuaciones normales
-  var e = 4;
-  for (var i = 0; i < e; i++) {
+  var e = new Array();
+  for (var i = 0; i < e.length; i++) {
     pdf.text('Ecuación ' + i + ': ', 290, y)
     pdf.text('Q1x + Q2x^2 - Q3x^3', 355, y)
     y+=20;
@@ -116,10 +117,10 @@ function CasoContinuoPDF(){
   y+=20;
   pdf.text('Polinomio generado mediante Minimos Cuadrados: ', x, y)
   pdf.setFont('Courier', 'bold');
-  pdf.setFontSize(15)
+  pdf.setFontSize(9)
   y+=30;
-  var polinomio='0.2558x^5 + 2.3x^3 + 1.5x^2 -0.365'; // Llenar variable con respuesta XD
-  pdf.text(polinomio, x, y)
+  var polinomio=document.getElementById('inputF').value; // Llenar variable con respuesta XD
+  pdf.text(polinomio, x-15, y)
   y+=30;
   pdf.setFont('Helvetica', 'Oblique');
   pdf.setFontSize(12);
@@ -158,7 +159,7 @@ function CasoContinuoPDF(){
   }
   pdf.line(x,y,x+400,y);//Linea inferior de la tabla
 
-  pdf.save('Smirnov');
+  pdf.save('SmirnovCasoContinuo');
 }
 
 
