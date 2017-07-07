@@ -312,7 +312,7 @@
                             <h4 class="modal-title" id="defaultModalLabel">Ingrese la expresion deseada:</h4>
                         </div>
                         <div class="modal-body">
-                            <input type="text" class="form-control" id="number3""/>
+                            <input type="text" class="form-control" id="number3"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal" onclick="AgregarCampo();">Aceptar</button>
@@ -369,7 +369,9 @@
             Mx=CrearMx();
             My=CrearMy();
 
-            document.getElementById('inputF').value=DiscLog(num,Mx,My);;
+            document.getElementById('inputF').value=DiscLog(num,Mx,My);
+            var fun = document.getElementById("inputF").value;
+            plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
         }
         var matrixecus;
         var coefsecus;
@@ -409,6 +411,8 @@
             if (number2==1) {
                 document.getElementById('inputF').value=DiscPol(num,1,Mx,My);
                 ecusspol(num,1,Mx,My);
+                var fun = document.getElementById("inputF").value;
+                plotDisc(parOrd(Mx,My),parOrd(Mx,evalFunc(fun,Mx)));
             }
             else if (number2==2) {
                 document.getElementById('inputF').value=DiscPol(num,2,Mx,My);
