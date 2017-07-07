@@ -7,9 +7,11 @@ function calculate() {
     
     //document.write('Ejercicio de grado ' + m + '<br><br>');
     //Puntos
-     var x = [4.0,4.2,4.5,4.7,5.1,5.5,5.9,6.3,6.8,7.1];
-     var y = [102.56,113.18,130.11,142.05,167.53,195.14,224.87,256.73,299.50,326.72];
+     var x = ['4.0','4.2','4.5','4.7','5.1','5.5','5.9','6.3','6.8','7.1'];
+     var y = ['102.56','113.18','130.11','142.05','167.53','195.14','224.87','256.73','299.50','326.72'];
     
+    
+    console.log(math.number(x));
    
     //var x= [1,2,5,15,25,30,35,40];
     //var y= [99,95,85,55,30,24,30,15];
@@ -27,7 +29,7 @@ function calculate() {
     document.getElementById('dlog').innerHTML=DiscLog(8,x1,y1);
     
     
-   document.getElementById('cpol').innerHTML=ContiPol(1,'x^3','0','2');
+//   document.getElementById('cpol').innerHTML=ContiPol(1,'x^3','0','2');
    
     
   
@@ -35,22 +37,22 @@ function calculate() {
     console.log("Testeo");
  
     
-    plotDisc(parOrd(x,y),parOrd(x,evalFunc('((-194.1382407320934*x^0)+(72.0845176953962*x^1))',x)));
+    plotDisc(parOrd(math.number(x),math.number(y)),parOrd(math.number(x),evalFunc('((-194.1382407320934*x^0)+(72.0845176953962*x^1))',math.number(x))));
 
-    
+    /*
     plotCon(parOrd(x,y),parOrd(x,y));
 
 
     console.log("Funcion");
     console.log(evalCn('1/x',1,3));
     console.log(evalCn('((1.1389788818415778*x^0)+(-0.294639317240115*x^1))',1,3));
-    
+    */
     /*
     var x7= [0,1,2,3,4,5,6,7,8,9]
      plotCon(parOrd(x7,evalFunc('1/x',x7)),parOrd(x7,evalFunc('((1.1389788818415778*x^0)+(-0.294639317240115*x^1))',x7)));
     */
-    var x7 = [1,2,3];
-    plotCon(parOrd(x7,evalCn('1/x',1,3)),parOrd(x7,evalCn('((1.1389788818415778*x^0)+(-0.294639317240115*x^1))',1,3)))
+    //var x7 = [1,2,3];
+    //plotCon(parOrd(x7,evalCn('1/x',1,3)),parOrd(x7,evalCn('((1.1389788818415778*x^0)+(-0.294639317240115*x^1))',1,3)))
     
           
  
@@ -94,7 +96,7 @@ function evalFunc(cad,x){
     for(var i=0;i<x.length;i++){
          var epoint =x[i];
         var scope = {
-          x: epoint,
+          x: Number(epoint),
         };
         evalpoints.push(code2.eval(scope));
         
